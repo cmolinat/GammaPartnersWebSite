@@ -1,0 +1,82 @@
+﻿@model IEnumerable<StoreMVC.Models.JobRequest>
+
+@{
+    ViewBag.Title = "Requests";
+}
+
+<h2>Requests</h2>
+
+<style>
+    .dark-row {
+        background: #AEC5E8;
+    }
+
+    .light-row {
+        background: #F1F3F0;
+    }
+
+    .cust-table-head {
+        background:;
+    }
+</style>
+<div class="container">
+    <div class="row">
+        <div class="table-responsive table-borderedcust-table">
+            <table class="table cust-table">
+                <thead>
+                    <tr class="cust-table-head">
+                        <th>
+                            @Html.DisplayNameFor(model => model.SubmittedBy)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Email)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Phone)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Message)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DateSubmitted)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FileName)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr class="dark-row">
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SubmittedBy)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Phone)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Message)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DateSubmitted)
+                            </td>
+                            <td>
+                                <img src="@Url.Content(item.FileName )" alt="" height="100" width="100" />
+
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <p>@Html.ActionLink("Go back", "Index", "Home")</p>
+</div>

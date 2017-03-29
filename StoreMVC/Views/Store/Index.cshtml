@@ -1,0 +1,58 @@
+﻿@model IEnumerable<StoreMVC.Models.Job>
+
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+
+
+</style>
+
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="row">
+            
+        </div>
+        <div class="row">
+            <div class="container">
+                <h2>Finished Jobs</h2>
+                <div class="row">
+
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-sm-4 event">
+
+                            <div class="overlay"></div>
+                            <a href="@Url.Action("Details", "Store", new { id= item.Id})">
+                                <img src="@Url.Content("~/Images/"+item.FileName)" alt="@item.Title" height="100" width="100" />
+                            </a>
+
+                            <p>
+                                <strong>@item.Title</strong><br>
+                                <em>@item.Description</em><br>
+                                <span class="small">@*10:00 AM - 21:00 PM*@</span>
+                            </p>
+                        </div>
+                    }
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id='myModal' class='modal'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id='myModalContent'></div>
+        </div>
+    </div>
+
+</div>
+<script type="text/javascript" src="@Url.Content("/Scripts/Index.js")"></script>
+
+
